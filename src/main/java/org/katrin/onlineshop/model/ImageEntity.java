@@ -16,11 +16,11 @@ import java.sql.Types;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "image")
+@Table(name = "images")
 public class ImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
+    @Column(name = "image_id", nullable = false)
     private int id;
 
     @Column(nullable = false)

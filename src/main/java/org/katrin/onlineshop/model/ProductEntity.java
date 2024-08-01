@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,11 +43,11 @@ public class ProductEntity {
 
     private int previewImageId;
 
-    @Column(name = "creation_date", nullable = false)
-    private LocalDateTime creationDate;
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
 
     @PrePersist
     protected void onCreate() {
-        creationDate = LocalDateTime.now();
+        createdAt = LocalDateTime.now();
     }
 }

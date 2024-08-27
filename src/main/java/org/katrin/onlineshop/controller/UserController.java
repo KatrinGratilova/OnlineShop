@@ -6,6 +6,7 @@ import org.katrin.onlineshop.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @AllArgsConstructor
@@ -16,7 +17,7 @@ public class UserController {
 
     @GetMapping("/registration")
     public String registration() {
-        return "registrtion";
+        return "registration";
     }
 
     @GetMapping("/login")
@@ -36,5 +37,12 @@ public class UserController {
     @GetMapping("/hello")
     public String hello() {
         return "hello";
+    }
+
+    @GetMapping("/users/{user}")
+    public String userInfo(@PathVariable UserEntity user, Model model) {
+        model.addAttribute("user", user);
+        model.addAttribute("products", user.getProducts());
+        return "user-info";
     }
 }

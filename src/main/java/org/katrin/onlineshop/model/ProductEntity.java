@@ -35,13 +35,14 @@ public class ProductEntity {
     @Column(nullable = false)
     private String city;
 
-    @Column(nullable = false)
-    private String author;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
     private List<ImageEntity> images = new ArrayList<>();
 
     private int previewImageId;
+
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn
+    private UserEntity user;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;

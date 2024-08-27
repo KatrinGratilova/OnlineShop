@@ -22,6 +22,7 @@ public class UserService {
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         userEntity.getRoles().add(Role.ROLE_USER);
         log.info("User created: " + userEntity.getEmail());
+        userRepository.save(userEntity);
         return true;
     }
 }

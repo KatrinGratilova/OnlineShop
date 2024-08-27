@@ -22,11 +22,10 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-// та самая строчка, которая фиксик доступ к бд
                 //.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/registration").permitAll()
-                        .requestMatchers("/product/**", "/image/**")
+                        .requestMatchers("/products/**", "/images/**", "/users/**")
                         .hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
                         .anyRequest().authenticated()
 
